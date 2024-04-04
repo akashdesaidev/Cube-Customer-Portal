@@ -8,7 +8,7 @@ interface PhotosDetails {
 }
 const Photos = ({ customerId }: { customerId: number | null }) => {
   const [photos, setPhotos] = useState<PhotosDetails[] | null>(null);
-  const [shouldUpdate, setShouldUpdate] = useState(true);
+  const [shouldUpdate, setShouldUpdate] = useState(false);
   const fetchPhotos = async () => {
     setShouldUpdate(false);
     const data = await fetch(
@@ -18,16 +18,15 @@ const Photos = ({ customerId }: { customerId: number | null }) => {
     setPhotos(res.splice(0, 9));
   };
 
-  
   useEffect(() => {
+  
     if (shouldUpdate) {
       fetchPhotos();
-     
+
       setShouldUpdate(false);
     }
   }, [shouldUpdate]);
 
-  
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,8 +35,10 @@ const Photos = ({ customerId }: { customerId: number | null }) => {
     return () => clearInterval(timer);
   }, []);
 
-  
- 
+  useEffect(() => {
+    setShouldUpdate(true);
+  }, [customerId]);
+
   return (
     <>
       {photos &&
