@@ -12,13 +12,13 @@ interface CustomerDetails {
   title: string;
 }
 
-
 const CustomerDetails: React.FC<Props> = ({ customerId }) => {
   const [details, setDetails] = useState<CustomerDetails | null>(null);
 
   const getData = async () => {
     try {
       const data = customers.find((customer) => customer.id === customerId);
+
       if (data) {
         setDetails(data);
       } else {
@@ -27,15 +27,13 @@ const CustomerDetails: React.FC<Props> = ({ customerId }) => {
       console.error(error);
     }
   };
- 
 
+  
   useEffect(() => {
     if (customerId !== null) {
       getData();
     }
   }, [customerId]);
-
-
 
   return (
     <div className="CustomerDetails">
@@ -45,7 +43,7 @@ const CustomerDetails: React.FC<Props> = ({ customerId }) => {
           <p>{details.title}</p>
 
           <div className="photo-grid">
-           <Photos customerId={customerId}/>
+            <Photos customerId={customerId} />
           </div>
         </div>
       ) : (
