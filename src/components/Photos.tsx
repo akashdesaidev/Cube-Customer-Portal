@@ -17,12 +17,12 @@ const Photos = ({ customerId }: { customerId: number | null }) => {
     const res: PhotosDetails[] = await data.json();
     setPhotos(res.splice(0, 9));
   };
-console.log("rerendering",shouldUpdate)
+
   
   useEffect(() => {
     if (shouldUpdate) {
       fetchPhotos();
-      console.log("fetching new photos")
+     
       setShouldUpdate(false);
     }
   }, [shouldUpdate]);
