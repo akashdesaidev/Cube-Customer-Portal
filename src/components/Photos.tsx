@@ -19,14 +19,11 @@ const Photos = ({ customerId }: { customerId: number | null }) => {
   };
 
   useEffect(() => {
-  
     if (shouldUpdate) {
       fetchPhotos();
-
       setShouldUpdate(false);
     }
   }, [shouldUpdate]);
-
 
   useEffect(() => {
     const timer = setInterval(() => {

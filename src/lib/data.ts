@@ -15,3 +15,7 @@ for (let i = 1; i <= 1000; i++) {
   });
 }
 
+export const getCostumers=(page:number)=>{
+
+  return customers.splice((page-1)*10,(page)*10)
+}

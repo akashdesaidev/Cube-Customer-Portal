@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 
 interface Customer {
   id: number;
@@ -13,8 +13,13 @@ interface Props {
 }
 
 const CustomerCard: React.FC<Props> = ({ customer, onSelect, isSelected }) => {
+  
+
   return (
-    <div className={`CustomerCard ${isSelected ? 'selected' : ''}`} onClick={onSelect}>
+    <div
+      className={`CustomerCard ${isSelected ? "selected" : ""}`}
+      onClick={onSelect}
+    >
       <h3>{customer.name}</h3>
       <p>{customer.title}</p>
     </div>

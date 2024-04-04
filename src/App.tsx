@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CustomerList from './components/CustomerList';
 import CustomerDetails from './components/CustomerDetails';
 import './App.css';
-import {customers} from "./lib/data"
+import {getCostumers} from "./lib/data"
 
 const App: React.FC = () => {
   const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(1);
@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <CustomerList customers={customers} onSelectCustomer={handleSelectCustomer} selectedCustomerId={selectedCustomerId} />
+      <CustomerList  onSelectCustomer={handleSelectCustomer} selectedCustomerId={selectedCustomerId} />
       <CustomerDetails customerId={selectedCustomerId} />
     </div>
   );
